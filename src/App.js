@@ -21,15 +21,18 @@ import './style.css';
 
 function App() {
   const access_key = '81576e1d5392a99806d7bc17e927f7e7';
+  const fullURL =
+    'http://www.apilayer.net/api/live?access_key=81576e1d5392a99806d7bc17e927f7e7';
+    const testURL = 'http://www.apilayer.net/api/live?access_key=81576e1d5392a99806d7bc17e927f7e7'
   const [data, setData] = useState('');
-  const URL =
-    'https://api.currencylayer.com/convert ? access_key = 81576e1d5392a99806d7bc17e927f7e7 & from = GBP & to = USD & amount = 10';
+  const URL = `https://api.currencylayer.com/convert ? access_key=${access_key} & from = GBP & to = USD & amount = 10`;
 
-  /* fetch(URL)
-    .then((response) => response.json())
-    .then((data) => setData(data[0]));*/
+  /*fetch(URL)
+    .then((res) => res.json())
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));*/
 
-  fetch(`http://www.apilayer.net/api/live?access_key=${access_key}`)
+  fetch(testURL)
     .then((res) => res.json())
     .then((response) => console.log(response))
     .catch((error) => console.log(error));
