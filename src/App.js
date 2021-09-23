@@ -36,18 +36,31 @@ function App() {
     'http://www.apilayer.net/api/live?access_key=81576e1d5392a99806d7bc17e927f7e7';
   const URL = `http://www.apilayer.net/api/live? access_key=${access_key} &currencies=USD,EUR`;
   //const [data, setData] = useState(exampleData);
+  const [usd, setUsd] = useState(0);
+  const [eur, setEur] = useState(0);
+  const [conversion, setConversion] = useState(false);
+  const [amount, setAmount] = useState(0);
 
   /*fetch(URL)
     .then((res) => res.json())
     .then((response) => console.log(response))
     .catch((error) => console.log(error));*/
+  const getAmount = (eve) => {
+    setAmount(eve);
+  };
 
   console.log(exampleData);
   return (
     <div>
       <div>Welcome to converter</div>
-      <div>Welcome to converter</div>
-      <Converter />
+      <input
+        name="amount"
+        onChange={(e) => getAmount(e.target.value)}
+        type="number"
+      />
+      <button onClick={(e) => setConversion(false)}>Convert USD to EUR</button>
+      <button onClick={(e) => setConversion(true)}>Convert EUR to USD</button>
+      <Converter usd={usd} eur={eur} amount={amount} conversion={conversion} />
     </div>
   );
 }
